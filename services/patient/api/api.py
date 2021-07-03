@@ -11,8 +11,12 @@ import os
 
 app = FastAPI()
 
-app.include_router(patient_router, tags=["Patient"])
-
+app.include_router(
+    patient_router,
+    prefix="/api/v1",
+    tags=["Patient"],
+    responses={418: {"description": "I'm a Patient API"}},
+)
 
 # static_dir = os.environ.get("work_dir", "/app/storage")
 # os.makedirs(static_dir, exist_ok=True)

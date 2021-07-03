@@ -11,7 +11,12 @@ import os
 
 app = FastAPI()
 
-app.include_router(domain_router, tags=["Domain"])
+app.include_router(
+    domain_router,
+    prefix="/api/v1",
+    tags=["Domain"],
+    responses={418: {"description": "I'm a Domain API"}},
+)
 
 
 # static_dir = os.environ.get("work_dir", "/app/storage")
