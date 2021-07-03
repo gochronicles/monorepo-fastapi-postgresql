@@ -47,7 +47,7 @@ class CRUDPatient(CRUDBase):
                 )
                 if obj is None:
                     raise PatientException(DOMAIN_patient_not_found, error_input=kwargs)
-                obj.name = kwargs.get("total_pages")
+                obj.name = kwargs.get("name")
                 obj.total_pages = kwargs.get("total_pages")
                 obj.document_count = kwargs.get("document_count")
                 obj.classified = kwargs.get("classified")

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from api.utils import logger
-from api.schemas import Domain
+from api.schemas import Domain, DomainUpdate
 from api.exception import DomainException
 from api.controllers import DomainController
 
@@ -36,7 +36,7 @@ def createDomain(create_domain_request: Domain):
 
 
 @domain_router.put("/domain")
-def updateDomain(update_domain_request: Domain):
+def updateDomain(update_domain_request: DomainUpdate):
     """This endpoint updates an existing domain record on database. If there is an
     update required for the database record, this endpoint can be executed.
     Domain id is considered as primary key for the update.

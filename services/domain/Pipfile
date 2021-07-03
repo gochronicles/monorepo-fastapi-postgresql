@@ -10,14 +10,6 @@ databases = "*"
 pyyaml = "*"
 psycopg2 = "*"
 
-[dev-packages]
-black = "*"
-pylama = "*"
-bandit = "*"
-psycopg2-binary = "*"
-
 [requires]
-python_version = "3.9"
+python_version = "3.8"
 
-[pipenv]
-allow_prereleases = true

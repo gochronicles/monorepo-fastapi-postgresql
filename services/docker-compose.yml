@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  domain:
+    build:
+      context: domain
+      dockerfile: Dockerfile
+    ports:
+      - "7000:8000"
+    volumes:
+      - "./domain:/app"
+    environment:
+      - POSTGRES_URI=postgresql://postgres:postgres@db:5432/postgres
+    depends_on:
+      - db
+    restart: on-failure
+
+  patient:
+    build:
+      context: patient
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./patient:/app"
+    environment:
+      - POSTGRES_URI=postgresql://postgres:postgres@db:5432/postgres
+    depends_on:
+      - db
+    restart: on-failure
+  db:
+    image: postgres:12-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    restart: on-failure
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data"

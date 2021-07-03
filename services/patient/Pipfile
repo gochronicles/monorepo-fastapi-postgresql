@@ -8,15 +8,8 @@ fastapi = "*"
 uvicorn = "*"
 databases = "*"
 pyyaml = "*"
-psycopg2-binary = "*"
-
-[dev-packages]
-black = "*"
-pylama = "*"
-bandit = "*"
+psycopg2 = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.8"
 
-[pipenv]
-allow_prereleases = true

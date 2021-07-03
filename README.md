@@ -8,22 +8,36 @@
 ./postgres.sh # docker should be running
 ```
 
-### Export env
+### Run a Microservice on local
+
+Export env
 
 ```bash
 export POSTGRES_URI="postgresql://postgres:postgres@0.0.0.0:5432/postgres"
 ```
 
-### Run a Microservice on local:
-
 Run a particular microservice (eg domain)
 
 ```
 cd services/domain
-pipenv install # for first time use
-pipenv run python main.py
+pipenv install # for first time setup
+pipenv run python main.py # or
+pipenv run uvicorn main:app --reload # for hot reload
 ```
 
 Endpoint available at
 
 `http://0.0.0.0:8000/api/v1/domain`
+
+### Run a Microservices on Docker & Docker compose
+
+```
+cd services
+docker-compose up
+```
+
+Endpoints available at
+
+`http://0.0.0.0:7000/api/v1/domain`
+
+`http://0.0.0.0:8000/api/v1/patient`

@@ -1,1 +1,1 @@
-from api.schemas.schema_domain import Domain
+from api.schemas.schema_domain import Domain, DomainUpdate

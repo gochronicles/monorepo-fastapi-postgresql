@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from api.utils import logger
-from api.schemas import Patient
+from api.schemas import Patient, PatientUpdate
 from api.exception import PatientException
 from api.controllers import PatientController
 
@@ -37,7 +37,7 @@ def createPatient(create_patient_request: Patient):
 
 
 @patient_router.put("/patient")
-def updatePatient(update_patient_request: Patient):
+def updatePatient(update_patient_request: PatientUpdate):
     """This endpoint updates an existing patient record on database. If there is an
     update required for the database record, this endpoint can be executed.
     Patient id is considered as primary key for the update.
