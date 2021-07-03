@@ -15,8 +15,7 @@ def createDomain(create_domain_request: Domain):
     to a new request to Domain API. The primary key for the domain record is "Domain Id"
 
     Args:
-        create_domain_request (Domain): [domain_id: str,total_pages: int,document_count: int,
-        unclassified: int,classified: int,project_id: str]
+        create_domain_request (Domain): [name: str, total_pages: int, document_count: int, classified: bool]
 
     Raises:
         HTTPException: raises HTTP Exception if there is any error in underlying CRUD
@@ -43,9 +42,7 @@ def updateDomain(update_domain_request: Domain):
     Domain id is considered as primary key for the update.
 
     Args:
-        update_domain_request (Domain): [domain_id: str,total_pages: int,document_count: int,
-        unclassified: int,classified: int,project_id: str]
-
+        update_domain_request (Domain): [name: str, total_pages: int, document_count: int, classified: bool]
     Raises:
         HTTPException: raises HTTP Exception if there is any error in underlying CRUD
         operation.

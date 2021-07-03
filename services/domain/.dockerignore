@@ -1,0 +1,16 @@
+# Files
+.dockerignore
+.editorconfig
+.gitignore
+.env.*
+Dockerfile
+Makefile
+LICENSE
+**/*.md
+**/*_test.py
+*.out
+
+# Folders
+.git/
+.github/
+build/
