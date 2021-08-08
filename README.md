@@ -42,5 +42,10 @@ Endpoints available at
 
 `http://0.0.0.0:8000/api/v1/patient`
 
+
+### Deploy with ease using Pulumi on GCP
+
+- Refer [these instructions](https://github.com/gochronicles/monorepo-fastapi-postgresql/tree/main/deploy) to deploy services to [GCP](https://www.pulumi.com/docs/get-started/) using [Pulumi](https://www.pulumi.com/docs/get-started/)
+
 Maintainer -
 - [Nikhil Akki](http://nikhilakki.in)
