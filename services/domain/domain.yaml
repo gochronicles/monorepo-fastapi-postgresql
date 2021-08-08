@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: domain
+spec:
+  selector:
+    matchLabels:
+      app: domain
+  template:
+    metadata:
+      labels:
+        app: domain
+    spec:
+      containers:
+      - name: domain
+        image: domain
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000

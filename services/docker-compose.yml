@@ -4,12 +4,13 @@ services:
     build:
       context: domain
       dockerfile: Dockerfile
+    container_name: domain
     ports:
       - "7000:8000"
     volumes:
       - "./domain:/app"
     environment:
-      - POSTGRES_URI=postgresql://postgres:postgres@db:5432/postgres
+      - POSTGRES_URI=${POSTGRES_URI}
     depends_on:
       - db
     restart: on-failure
@@ -18,12 +19,13 @@ services:
     build:
       context: patient
       dockerfile: Dockerfile
+    container_name: patient
     ports:
       - "8000:8000"
     volumes:
       - "./patient:/app"
     environment:
-      - POSTGRES_URI=postgresql://postgres:postgres@db:5432/postgres
+      - POSTGRES_URI=${POSTGRES_URI}
     depends_on:
       - db
     restart: on-failure
@@ -32,7 +34,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - PGDATA=/var/lib/postgresql/data/pgdata
     restart: on-failure
     volumes:

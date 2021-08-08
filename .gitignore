@@ -140,3 +140,5 @@ cython_debug/
 # custom
 pgdata
 .vscode
+
+Pulumi.*.yaml
