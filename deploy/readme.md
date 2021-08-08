@@ -11,6 +11,7 @@
 pulumi config set db_tier db-f1-micro
 pulumi config set db_name mono-db
 pulumi config set bucket monorepo
+pulumi config set mode dev # dev or prod (uvicorn logging will be configured accordingly)
 pulumi config set gcp:project healthy-highway-318805
 pulumi config set gcp:region us-central1
 pulumi config set gcp:zone us-central-1a

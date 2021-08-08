@@ -5,7 +5,7 @@
 
 from pulumi import Output
 from pulumi_docker import Image, DockerBuild
-from components import gcp_config
+from components import gcp_config, config
 
 
 def create_gcr_image(image_name: str):
@@ -13,6 +13,9 @@ def create_gcr_image(image_name: str):
     image = Image(
         image_name,
         Output.concat(f"gcr.io/{project}/{image_name}:latest"),
-        build=DockerBuild(dockerfile=f"../services/{image_name}/Dockerfile"),
+        build=DockerBuild(
+            dockerfile=f"../services/{image_name}/Dockerfile",
+            env={"mode": config.require("mode")},
+        ),
     )
     return image

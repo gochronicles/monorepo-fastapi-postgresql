@@ -2,7 +2,7 @@ import os
 import uvicorn
 from api import app
 
-MODE = os.get_env("MODE", "dev").lower()
+MODE = os.getenv("MODE", "dev").lower()
 
 if __name__ == "__main__":
     if MODE == "dev":
