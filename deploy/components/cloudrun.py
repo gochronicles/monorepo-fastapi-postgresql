@@ -4,21 +4,21 @@
 # https://opensource.org/licenses/MIT
 
 import pulumi_gcp as gcp
-from pulumi import Config
+from pulumi import ProviderResource
 from pulumi_gcp.cloudrun import (
     ServiceTemplateMetadataArgs,
     ServiceTemplateSpecContainerEnvArgs,
 )
-
-config = Config()
+from components import config, gcp_config
 
 
 def create_cloud_run_instance(
     cloud_sql_instance: gcp.sql.DatabaseInstance, sql_instance_url: str, image: str
 ):
+
     cloud_run = gcp.cloudrun.Service(
         "default-service",
-        location=Config("gcp").require("region"),
+        location=gcp_config.require("region"),
         template=gcp.cloudrun.ServiceTemplateArgs(
             metadata=ServiceTemplateMetadataArgs(
                 annotations={
@@ -33,7 +33,7 @@ def create_cloud_run_instance(
                             ServiceTemplateSpecContainerEnvArgs(
                                 name="POSTGRES_URI",
                                 value=sql_instance_url,
-                            )
+                            ),
                         ],
                     )
                 ],
