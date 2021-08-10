@@ -46,4 +46,11 @@ def create_cloud_run_instance(
             )
         ],
     )
+    _ = gcp.cloudrun.IamMember(
+        "cr_everyone",
+        service=cloud_run.name,
+        location=gcp_config.require("region"),
+        role="roles/run.invoker",
+        member="allUsers",
+    )  # enable public access to URL
     return cloud_run
