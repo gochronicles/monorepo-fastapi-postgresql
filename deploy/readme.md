@@ -30,3 +30,8 @@ pulumi up  # create all assets
 
 pulumi destroy -y # delete all assets
 ```
+
+### Common Issues & Troubleshooting
+
+1. Run `pulumi destroy -y` twice to delete all instances (running it only once gives an error)
+2. Running `pulumi up` 2nd time errors out, currently the only fix is to run #1 and run this command again.
