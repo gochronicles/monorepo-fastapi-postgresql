@@ -13,11 +13,14 @@ from components import config, gcp_config
 
 
 def create_cloud_run_instance(
-    cloud_sql_instance: gcp.sql.DatabaseInstance, sql_instance_url: str, image: str
+    name: str,
+    cloud_sql_instance: gcp.sql.DatabaseInstance,
+    sql_instance_url: str,
+    image: str,
 ):
 
     cloud_run = gcp.cloudrun.Service(
-        "default-service",
+        f"{name}-service",
         location=gcp_config.require("region"),
         template=gcp.cloudrun.ServiceTemplateArgs(
             metadata=ServiceTemplateMetadataArgs(
@@ -47,7 +50,7 @@ def create_cloud_run_instance(
         ],
     )
     _ = gcp.cloudrun.IamMember(
-        "cr_everyone",
+        f"{name}_everyone",
         service=cloud_run.name,
         location=gcp_config.require("region"),
         role="roles/run.invoker",

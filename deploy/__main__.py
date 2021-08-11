@@ -9,10 +9,10 @@ cloud_sql_instance, sql_instance_url = create_database()
 domain_image = create_gcr_image("domain")
 patient_image = create_gcr_image("patient")
 domain_cloud_run = create_cloud_run_instance(
-    cloud_sql_instance, sql_instance_url, domain_image.image_name
+    "domain", cloud_sql_instance, sql_instance_url, domain_image.image_name
 )
 patient_cloud_run = create_cloud_run_instance(
-    cloud_sql_instance, sql_instance_url, patient_image
+    "patient", cloud_sql_instance, sql_instance_url, patient_image
 )
 
 # Export resource info
